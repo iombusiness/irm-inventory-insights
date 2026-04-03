@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      const { pathname, search, hash } = window.location;
+      const segments = pathname.split("/").filter(Boolean);
+      const repo = segments[0];
+      const redirectBase = repo ? `/${repo}/` : "/";
+      const route = segments.slice(1).join("/");
+      const redirectPath = encodeURIComponent(`/${route}${search}`);
+      const target = `${redirectBase}?p=${redirectPath}${hash}`;
+
+      window.location.replace(target);
+    </script>
+  </head>
+  <body></body>
+</html>
