@@ -5,7 +5,10 @@ import { Input } from "@/components/ui/input";
 // In a real setup, these would be fetched from the GitHub repo's guides folder.
 // For now, this is a placeholder structure. Add PDF files to a /guides folder in GitHub
 // and update this list, or implement dynamic fetching.
-const sampleGuides: { title: string; filename: string }[] = [];
+const sampleGuides = [
+  { title: "Getting Started", filename: "getting_started.pdf" },
+  { title: "Setting Strategic Stock", filename: "setting_strategic_stock.pdf" },
+];
 
 const GuidesSection = () => {
   const [search, setSearch] = useState("");
@@ -29,7 +32,7 @@ const GuidesSection = () => {
           <h3 className="text-xl font-semibold text-foreground">{guide?.title}</h3>
           <div className="w-full bg-muted rounded-lg overflow-hidden" style={{ height: "80vh" }}>
             <iframe
-              src={`/guides/${activeGuide}`}
+              src={`${import.meta.env.BASE_URL}guides/${activeGuide}`}
               className="w-full h-full"
               title={guide?.title}
             />
